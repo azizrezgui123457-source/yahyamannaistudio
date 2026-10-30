@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yahya Mannai - Barber & Styling Studio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FFF9E6',
+                            300: '#F3E5AB',
+                            400: '#E6CA65',
+                            500: '#D4AF37',
+                            600: '#AA820A',
+                            700: '#805F00',
+                        },
+                        dark: {
+                            950: '#0B0B0D',
+                            900: '#111114',
+                            800: '#1A1A1E',
+                            700: '#25252B',
+                            600: '#32323A'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF099 0%, #D4AF37 50%, #997A15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.12);
+        }
+        .gold-border-glow:hover {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.30);
+        }
+        .glass-card {
+            background: rgba(22, 22, 26, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-dark-950 text-gray-200 font-sans antialiased selection:bg-gold-500 selection:text-black">
+
+    <!-- INTRO SPLASH OVERLAY (POWERED BY AZIZ REZGUI) -->
+    <div id="intro-overlay" class="fixed inset-0 z-[100] bg-dark-950 flex flex-col items-center justify-center transition-all duration-1000 opacity-100 pointer-events-auto cursor-pointer" onclick="dismissIntro()">
+        <!-- Glow Aura -->
+        <div class="absolute w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-gold-500/15 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
+
+        <div class="relative z-10 text-center px-4 space-y-4 animate-[bounceIn_1.2s_ease-out]">
+            <!-- Subtle Badge Icon -->
+            <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-full border border-gold-500/40 bg-dark-900/80 flex items-center justify-center text-gold-400 shadow-xl shadow-gold-500/10 mb-2">
+                <i class="fa-solid fa-code text-2xl sm:text-3xl text-gold-500"></i>
+            </div>
+
+            <!-- Main Intro Text -->
+            <div class="overflow-hidden">
+                <p class="text-xs sm:text-sm font-semibold tracking-[0.3em] text-gray-400 uppercase">
+                    POWERED BY
+                </p>
+                <h1 class="font-serif text-3xl sm:text-5xl font-extrabold gold-gradient-text tracking-wider mt-1">
+                    AZIZ REZGUI
+                </h1>
+            </div>
+
+            <!-- Minimal Loader Bar -->
+            <div class="w-40 sm:w-56 h-[2px] bg-dark-800 mx-auto rounded-full overflow-hidden mt-6">
+                <div class="h-full bg-gradient-to-r from-gold-600 via-gold-400 to-gold-600 animate-[loadingBar_2.5s_easeInOut_infinite]"></div>
+            </div>
+
+            <p class="text-[10px] text-gray-500 uppercase tracking-widest pt-2">Cliquer pour passer</p>
+        </div>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-dark-950/85 backdrop-blur-md border-b border-gold-500/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full border border-gold-500/60 flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-black transition-all duration-300 shadow-md shadow-gold-500/10">
+                        <i class="fa-solid fa-scissors text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-lg sm:text-xl font-bold tracking-wider gold-gradient-text block leading-none">YAHYA MANNAI</span>
+                        <span class="text-[10px] tracking-widest text-gray-400 uppercase font-sans">Barber & Styling Studio</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-widest uppercase">
+                    <a href="#services" class="hover:text-gold-400 transition-colors">Services</a>
+                    <a href="#gallery" class="hover:text-gold-400 transition-colors">Galerie</a>
+                    <a href="#instagram" class="hover:text-gold-400 transition-colors">Instagram</a>
+                    <a href="#location" class="hover:text-gold-400 transition-colors">Localisation</a>
+                    <a href="#booking" class="hover:text-gold-400 transition-colors">Réservation</a>
+                </div>
+
+                <!-- CTA Actions -->
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="https://www.instagram.com/yahya__mannai_?utm_source=ig_web_button_share_sheet&xtok=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full border border-gold-500/30 text-gold-400 hover:bg-gold-500 hover:text-black flex items-center justify-center transition-all">
+                        <i class="fa-brands fa-instagram text-base"></i>
+                    </a>
+                    <a href="#booking" class="px-5 py-2.5 rounded-full bg-gold-500 hover:bg-gold-400 text-black font-bold text-xs tracking-widest uppercase transition-all duration-300 shadow-md shadow-gold-500/20">
+                        Réserver RDV
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-gold-500 focus:outline-none p-2">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-900 border-b border-gold-500/20 px-4 pt-4 pb-6 space-y-4">
+            <a href="#services" class="block text-gray-300 hover:text-gold-400 font-medium py-1">Services & Tarifs</a>
+            <a href="#gallery" class="block text-gray-300 hover:text-gold-400 font-medium py-1">Galerie Photos</a>
+            <a href="#instagram" class="block text-gray-300 hover:text-gold-400 font-medium py-1">Mon Instagram</a>
+            <a href="#location" class="block text-gray-300 hover:text-gold-400 font-medium py-1">Localisation & Contact</a>
+            <a href="#booking" class="block text-gray-300 hover:text-gold-400 font-medium py-1">Prendre Rendez-vous</a>
+            <div class="pt-2 flex flex-col gap-2">
+                <a href="https://www.instagram.com/yahya__mannai_?utm_source=ig_web_button_share_sheet&xtok=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="w-full text-center py-2.5 rounded-full border border-gold-500 text-gold-400 font-bold text-xs uppercase tracking-wider">
+                    <i class="fa-brands fa-instagram mr-2"></i> @yahya__mannai_
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-dark-800 via-dark-900 to-dark-950">
+        <!-- Glow Effect Behind Hero -->
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 text-center z-10 py-20">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400 text-xs sm:text-sm font-semibold mb-8 uppercase tracking-widest shadow-inner">
+                <i class="fa-solid fa-crown text-xs text-gold-400"></i>
+                <span>Yahya Mannai • Studio VIP</span>
+                <i class="fa-solid fa-crown text-xs text-gold-400"></i>
+            </div>
+
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                L'Art du Soin & de la Coiffure <br><span class="gold-gradient-text">Yahya Mannai</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-gray-400 text-base sm:text-lg mb-10 leading-relaxed">
+                Une expérience de haute coiffure masculine, tailles de barbe impeccables et soins personnalisés dans une ambiance raffinée et moderne.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#booking" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gold-500 hover:bg-gold-400 text-black font-bold text-xs uppercase tracking-widest transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg shadow-gold-500/20">
+                    <i class="fa-regular fa-calendar-check mr-2 text-sm"></i> Prendre RDV
+                </a>
+                
+                <!-- Direct Instagram CTA Button -->
+                <a href="https://www.instagram.com/yahya__mannai_?utm_source=ig_web_button_share_sheet&xtok=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 rounded-full border border-gold-500/40 text-gold-400 hover:border-gold-500 hover:bg-gold-500/10 font-bold text-xs uppercase tracking-widest transition-all duration-300">
+                    <i class="fa-brands fa-instagram text-base mr-2"></i> Mon Instagram
+                </a>
+            </div>
+
+            <!-- Features Highlights -->
+            <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 pt-10 border-t border-dark-700/60 text-center">
+                <div class="p-3">
+                    <p class="text-gold-500 font-bold text-2xl font-serif">100%</p>
+                    <p class="text-gray-400 text-xs uppercase tracking-wider mt-1">Soin de Qualité</p>
+                </div>
+                <div class="p-3">
+                    <p class="text-gold-500 font-bold text-2xl font-serif">Styliste</p>
+                    <p class="text-gray-400 text-xs uppercase tracking-wider mt-1">Visagiste Expert</p>
+                </div>
+                <div class="p-3">
+                    <p class="text-gold-500 font-bold text-2xl font-serif">VIP</p>
+                    <p class="text-gray-400 text-xs uppercase tracking-wider mt-1">Produits Premium</p>
+                </div>
+                <div class="p-3">
+                    <p class="text-gold-500 font-bold text-2xl font-serif">SUR RDV</p>
+                    <p class="text-gray-400 text-xs uppercase tracking-wider mt-1">Service Exclusif</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES & PRICING SECTION -->
+    <section id="services" class="py-24 bg-dark-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-gold-500 font-semibold text-xs uppercase tracking-widest mb-2">Prestations Exclusives</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-white">Services & Tarifs</h3>
+                <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="glass-card p-8 rounded-2xl border border-dark-700 hover:border-gold-500/50 transition-all duration-300 gold-border-glow group">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-500 text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-scissors"></i>
+                    </div>
+                    <div class="flex justify-between items-baseline mb-3">
+                        <h4 class="font-serif text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Coupe Signature</h4>
+                        <span class="px-3 py-1 bg-gold-500/10 text-gold-400 border border-gold-500/30 rounded-full font-bold text-sm">35 DT</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        Diagnostic visagiste personnalisé, shampoing relaxant, coupe ciseaux/tondeuse haute précision w brushing.
+                    </p>
+                    <div class="text-xs text-gold-500/80 flex items-center gap-2">
+                        <i class="fa-regular fa-clock"></i> <span>Durée: ~40 min</span>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card p-8 rounded-2xl border border-dark-700 hover:border-gold-500/50 transition-all duration-300 gold-border-glow group">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-500 text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-user-ninja"></i>
+                    </div>
+                    <div class="flex justify-between items-baseline mb-3">
+                        <h4 class="font-serif text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Barbe Ritual Spa</h4>
+                        <span class="px-3 py-1 bg-gold-500/10 text-gold-400 border border-gold-500/30 rounded-full font-bold text-sm">25 DT</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        Taille de barbe sculptée, rasage traditionnel au coupe-chou avec serviette chaude w huile essentielle.
+                    </p>
+                    <div class="text-xs text-gold-500/80 flex items-center gap-2">
+                        <i class="fa-regular fa-clock"></i> <span>Durée: ~30 min</span>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card p-8 rounded-2xl border border-dark-700 hover:border-gold-500/50 transition-all duration-300 gold-border-glow group">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-500 text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+                    <div class="flex justify-between items-baseline mb-3">
+                        <h4 class="font-serif text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Pack Combo VIP</h4>
+                        <span class="px-3 py-1 bg-gold-500/10 text-gold-400 border border-gold-500/30 rounded-full font-bold text-sm">55 DT</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        Le soin complet : Coupe Cheveux Signature + Taille Barbe Ritual Spa + Soin rapide du visage.
+                    </p>
+                    <div class="text-xs text-gold-500/80 flex items-center gap-2">
+                        <i class="fa-regular fa-clock"></i> <span>Durée: ~1h 10min</span>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-card p-8 rounded-2xl border border-dark-700 hover:border-gold-500/50 transition-all duration-300 gold-border-glow group">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-500 text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-sparkles"></i>
+                    </div>
+                    <div class="flex justify-between items-baseline mb-3">
+                        <h4 class="font-serif text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Kératine & Protéine</h4>
+                        <span class="px-3 py-1 bg-gold-500/10 text-gold-400 border border-gold-500/30 rounded-full font-bold text-sm">90 DT+</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        Soin lissant et réparateur profond pour restaurer la force, la brillance et la souplesse de vos cheveux.
+                    </p>
+                    <div class="text-xs text-gold-500/80 flex items-center gap-2">
+                        <i class="fa-regular fa-clock"></i> <span>Durée: ~1h 45min</span>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="glass-card p-8 rounded-2xl border border-dark-700 hover:border-gold-500/50 transition-all duration-300 gold-border-glow group">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-500 text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div class="flex justify-between items-baseline mb-3">
+                        <h4 class="font-serif text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Coloration / Mèches</h4>
+                        <span class="px-3 py-1 bg-gold-500/10 text-gold-400 border border-gold-500/30 rounded-full font-bold text-sm">50 DT+</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        Teinte de barbe ou cheveux, camoufler les cheveux blancs ou effet mèches/patine tendance.
+                    </p>
+                    <div class="text-xs text-gold-500/80 flex items-center gap-2">
+                        <i class="fa-regular fa-clock"></i> <span>Durée: ~50 min</span>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="glass-card p-8 rounded-2xl border border-dark-700 hover:border-gold-500/50 transition-all duration-300 gold-border-glow group">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-500 text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <div class="flex justify-between items-baseline mb-3">
+                        <h4 class="font-serif text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Pack Marié Groom</h4>
+                        <span class="px-3 py-1 bg-gold-500/10 text-gold-400 border border-gold-500/30 rounded-full font-bold text-sm">Sur devis</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                        Préparation complète pour le jour J : Coupe, barbe, soin visage purifiant, gommage et coiffage final.
+                    </p>
+                    <div class="text-xs text-gold-500/80 flex items-center gap-2">
+                        <i class="fa-regular fa-clock"></i> <span>Durée: ~2h 30min</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="py-24 bg-dark-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-gold-500 font-semibold text-xs uppercase tracking-widest mb-2">Galerie Photos</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-white">Nos Réalisations & Styles</h3>
+                <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Gallery 1 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-dark-800 border border-dark-700">
+                    <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=800&q=80" alt="Dégradé Barber" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-gold-400 font-serif text-lg font-bold">Dégradé à Blanc & Barbe</span>
+                        <span class="text-gray-300 text-xs">Yahya Mannai Studio</span>
+                    </div>
+                </div>
+
+                <!-- Gallery 2 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-dark-800 border border-dark-700">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80" alt="Coupe Homme Modern" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-gold-400 font-serif text-lg font-bold">Crop & Texture</span>
+                        <span class="text-gray-300 text-xs">Stylage Moderne</span>
+                    </div>
+                </div>
+
+                <!-- Gallery 3 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-dark-800 border border-dark-700">
+                    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=800&q=80" alt="Taille de Barbe" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-gold-400 font-serif text-lg font-bold">Soin & Contour Barbe</span>
+                        <span class="text-gray-300 text-xs">Rasage Traditionnel</span>
+                    </div>
+                </div>
+
+                <!-- Gallery 4 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-dark-800 border border-dark-700">
+                    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=800&q=80" alt="Salon Ambiance" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-gold-400 font-serif text-lg font-bold">Cadre VIP & Confort</span>
+                        <span class="text-gray-300 text-xs">Yahya Mannai Lounge</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTEGRATED INSTAGRAM SECTION -->
+    <section id="instagram" class="py-20 bg-dark-900 border-t border-b border-dark-700 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-dark-800 via-dark-900 to-dark-800 border border-gold-500/30 gold-border-glow">
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Left Column Info -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-semibold uppercase tracking-wider">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                            <span>Suivez-nous en direct</span>
+                        </div>
+                        <h3 class="font-serif text-3xl sm:text-4xl font-bold text-white">
+                            Retrouvez les dernières vidéos & créations sur Instagram
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Abonnez-vous à la page officielle <strong class="text-gold-400">@yahya__mannai_</strong> pour découvrir nos relooking avant/après, nos vidéos de styling et réserver directement par message privé.
+                        </p>
+                        
+                        <div class="pt-2 flex flex-wrap gap-4">
+                            <a href="https://www.instagram.com/yahya__mannai_?utm_source=ig_web_button_share_sheet&xtok=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 via-pink-600 to-yellow-500 hover:opacity-95 text-white font-bold text-xs tracking-widest uppercase transition-all shadow-lg">
+                                <i class="fa-brands fa-instagram text-lg"></i>
+                                <span>Suivre @yahya__mannai_</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column Instagram Badge Card -->
+                    <div class="lg:col-span-5">
+                        <a href="https://www.instagram.com/yahya__mannai_?utm_source=ig_web_button_share_sheet&xtok=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="block bg-dark-950 p-6 rounded-2xl border border-dark-700 hover:border-gold-500/50 transition-all group">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-16 h-16 rounded-full p-0.5 bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600">
+                                    <div class="w-full h-full rounded-full bg-dark-900 flex items-center justify-center overflow-hidden">
+                                        <i class="fa-solid fa-user-check text-gold-500 text-2xl"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-base flex items-center gap-1.5">
+                                        yahya__mannai_
+                                        <i class="fa-solid fa-circle-check text-blue-500 text-xs"></i>
+                                    </h4>
+                                    <p class="text-gray-400 text-xs">Yahya Mannai • Barber Studio</p>
+                                    <p class="text-gold-500 text-[11px] mt-0.5">Coiffeur & Visagiste Professionnel</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 py-3 border-y border-dark-800 text-center text-xs">
+                                <div>
+                                    <span class="block font-bold text-white">Créations</span>
+                                    <span class="text-gray-500">Postes & Reels</span>
+                                </div>
+                                <div>
+                                    <span class="block font-bold text-gold-400">VIP</span>
+                                    <span class="text-gray-500">Clientèle</span>
+                                </div>
+                                <div>
+                                    <span class="block font-bold text-white">4.9 ★</span>
+                                    <span class="text-gray-500">Avis Clients</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-center text-xs text-gold-400 group-hover:underline font-semibold flex items-center justify-center gap-2">
+                                <span>Voir le profil officiel Instagram</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION & CONTACT SECTION -->
+    <section id="location" class="py-24 bg-dark-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-gold-500 font-semibold text-xs uppercase tracking-widest mb-2">Visitez Notre Salon</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-white">Localisation & Contact</h3>
+                <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Info Side -->
+                <div class="space-y-6">
+                    <div class="glass-card p-6 rounded-2xl border border-dark-700 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-500 text-xl shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-serif font-bold text-lg mb-1">Adresse Du Salon</h4>
+                            <p class="text-gray-400 text-sm mb-3">Avenue Principale, Tunis, Tunisie</p>
+                            <!-- Google Maps Direct Button Placeholder -->
+                            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-gold-400 hover:text-gold-300">
+                                <span>Ouvrir sur Google Maps</span>
+                                <i class="fa-solid fa-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-dark-700 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-500 text-xl shrink-0">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-serif font-bold text-lg mb-1">Téléphone & WhatsApp</h4>
+                            <p class="text-gray-400 text-sm mb-2">+216 20 000 000</p>
+                            <span class="text-xs text-gold-500/80">Disponible pour appels et messages WhatsApp</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-dark-700 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-500 text-xl shrink-0">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+                        <div class="w-full">
+                            <h4 class="text-white font-serif font-bold text-lg mb-3">Horaires d'Ouverture</h4>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex justify-between border-b border-dark-700/60 pb-1 text-gray-300">
+                                    <span>Lundi - Samedi :</span>
+                                    <span class="text-gold-400 font-semibold">09:30 - 20:30</span>
+                                </div>
+                                <div class="flex justify-between text-gray-300">
+                                    <span>Dimanche :</span>
+                                    <span class="text-gold-400 font-semibold">10:00 - 18:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Maps Preview Embed Placeholder -->
+                <div class="rounded-2xl overflow-hidden border border-dark-700 bg-dark-900 min-h-[350px] relative">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102238.9734138166!2d10.10051165!3d36.8064948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd345840a32049%3A0x6e78a6358c544e33!2sTunis!5e0!3m2!1sfr!2stn!4v1680000000000!5m2!1sfr!2stn" 
+                        class="w-full h-full min-h-[380px] border-0 grayscale invert contrast-125 opacity-80" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING APPOINTMENT FORM SECTION -->
+    <section id="booking" class="py-24 bg-dark-900 border-t border-dark-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-gold-500 font-semibold text-xs uppercase tracking-widest mb-2">Prendre RDV Facilement</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-white">Réservez Votre Séance</h3>
+                <p class="text-gray-400 text-sm mt-2">Remplissez le formulaire ci-dessous pour fixer votre créneau</p>
+                <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <form id="appointment-form" onsubmit="handleFormSubmit(event)" class="glass-card p-8 sm:p-10 rounded-3xl border border-gold-500/30 space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Nom & Prénom *</label>
+                        <input type="text" required placeholder="Votre nom complet" class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-dark-700 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Numéro de Téléphone *</label>
+                        <input type="tel" required placeholder="Ex: 20 123 456" class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-dark-700 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 text-sm">
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Service Souhaité *</label>
+                        <select required class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-dark-700 text-white focus:outline-none focus:border-gold-500 text-sm">
+                            <option value="">Choisissez une prestation</option>
+                            <option value="coupe">Coupe Signature (35 DT)</option>
+                            <option value="barbe">Barbe Ritual Spa (25 DT)</option>
+                            <option value="combo">Pack Combo VIP (55 DT)</option>
+                            <option value="keratine">Soin Kératine / Protéine (90 DT+)</option>
+                            <option value="couleur">Coloration / Mèches (50 DT+)</option>
+                            <option value="marie">Pack Marié / VIP</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Date & Heure Souhaitée *</label>
+                        <input type="datetime-local" required class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-dark-700 text-white focus:outline-none focus:border-gold-500 text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Remarques Particulières (Optionnel)</label>
+                    <textarea rows="3" placeholder="Précisions sur vos cheveux ou demandes particulières..." class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-dark-700 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 text-sm"></textarea>
+                </div>
+
+                <!-- Custom Message Box -->
+                <div id="form-message" class="hidden p-4 rounded-xl text-center text-sm font-semibold"></div>
+
+                <button type="submit" class="w-full py-4 rounded-full bg-gold-500 hover:bg-gold-400 text-black font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-lg shadow-gold-500/20">
+                    <i class="fa-regular fa-paper-plane mr-2"></i> Confirmer Ma Demande De RDV
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 bg-dark-950 border-t border-dark-800 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-6">
+            <div class="flex justify-center items-center gap-3">
+                <span class="font-serif text-lg font-bold gold-gradient-text tracking-wider">YAHYA MANNAI</span>
+            </div>
+            
+            <p class="text-gray-400">Barber Studio & Coiffure VIP</p>
+
+            <!-- Social Icons -->
+            <div class="flex justify-center items-center gap-4 text-base">
+                <a href="https://www.instagram.com/yahya__mannai_?utm_source=ig_web_button_share_sheet&xtok=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-dark-700 flex items-center justify-center text-gold-400 hover:border-gold-500 hover:bg-gold-500 hover:text-black transition-all">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full border border-dark-700 flex items-center justify-center text-gold-400 hover:border-gold-500 hover:bg-gold-500 hover:text-black transition-all">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full border border-dark-700 flex items-center justify-center text-gold-400 hover:border-gold-500 hover:bg-gold-500 hover:text-black transition-all">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <p class="pt-4 border-t border-dark-900">&copy; 2026 Salon Yahya Mannai. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- CSS Keyframes for Intro -->
+    <style>
+        @keyframes loadingBar {
+            0% { width: 0%; margin-left: 0%; }
+            50% { width: 100%; margin-left: 0%; }
+            100% { width: 0%; margin-left: 100%; }
+        }
+    </style>
+
+    <!-- JS Logic -->
+    <script>
+        // Intro Overlay Dismissal
+        function dismissIntro() {
+            const overlay = document.getElementById('intro-overlay');
+            if (overlay && !overlay.classList.contains('opacity-0')) {
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 1000);
+            }
+        }
+
+        // Auto dismiss intro overlay after 2.8s
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                dismissIntro();
+            }, 2800);
+        });
+
+        // Mobile menu drawer toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Booking form handling without alert()
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const msgBox = document.getElementById('form-message');
+            msgBox.className = "p-4 rounded-xl text-center text-sm font-semibold bg-gold-500/20 border border-gold-500 text-gold-400 block";
+            msgBox.innerHTML = "<i class='fa-solid fa-circle-check mr-2'></i> Merci ! Votre demande de rendez-vous chez Yahya Mannai a été envoyée avec succès. Nous vous contacterons rapidement.";
+            
+            document.getElementById('appointment-form').reset();
+        }
+    </script>
+</body>
+</html>
